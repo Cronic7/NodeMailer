@@ -46,14 +46,24 @@ Keep in mind that using your Gmail password directly in the code might not be th
 
 Also, note that Gmail may require you to allow access to less secure apps in your account settings or use an App Password if you have two-factor authentication enabled.
 
+To get an App Password for your Gmail account, follow these detailed steps:
+
+Note: You’ll need to have two-step verification enabled on your Gmail account before generating an App Password. If you haven’t enabled it, do so first by going to your Google Account settings.
+
+Access Your Google Account:
+Start by visiting the Google Account management page. You can do this by navigating to https://myaccount.google.com/.
+Sign In: Sign in to the Google Account associated with the Gmail address you want to use for sending emails programmatically.
+Security: In the left sidebar, click on “Security.”
+Scroll down to How you sign in to google and click on 2-step verificaiton.
+App Passwords: Scroll down to “App passwords.” Click on “App passwords.” You may be prompted to re-enter your password for security purposes.
+App name: Enter a custom name for this App Password. It helps you identify it later, so choose something related to the application or use case where you plan to use this App Password.
+Create: Click the “Create” button. Google will create a unique 16-character App Password for your custom application/device.
+
+Run the Script
+
+Save your changes and run the script using the following command:
 ```
-// Use App Password if two-factor authentication is enabled
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'your-email@gmail.com',
-    pass: 'your-app-password'  // Replace with your App Password
-  }
-});
+node mailer.js
 ```
+
 Remember to keep your email credentials and sensitive information secure. It's often a good practice to use environment variables or a configuration file to store these credentials instead of hardcoding them directly into your code.
