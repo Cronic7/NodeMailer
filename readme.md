@@ -59,6 +59,15 @@ App Passwords: Scroll down to “App passwords.” Click on “App passwords.”
 App name: Enter a custom name for this App Password. It helps you identify it later, so choose something related to the application or use case where you plan to use this App Password.
 Create: Click the “Create” button. Google will create a unique 16-character App Password for your custom application/device.
 
+Create a .env file:
+Create a file named .env in your project's root directory. Add your Gmail credentials to this file:
+
+ ```
+# Gmail credentials
+EMAIL_USER=your-email@gmail.com   # Replace with your Gmail email address
+EMAIL_PASSWORD=your-password       # Replace with your Gmail password or an app-specific password
+```
+
 Run the Script
 
 Save your changes and run the script using the following command:

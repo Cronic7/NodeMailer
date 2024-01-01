@@ -1,4 +1,11 @@
 const nodemailer= require('nodemailer')
+require('dotenv').config()
+const path = require("path")
+
+// Read environment variables
+const EMAIL_USER = process.env.EMAIL_USER || 'your-email@gmail.com';
+const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD || 'your-password';
+ 
 
 // Creating transporter object using gmail smtp
 
@@ -8,29 +15,29 @@ const transporter = nodemailer.createTransport({
     port: 587,
     secure: false, // `true` for port 465, `false` for all other ports
     auth:{
-        user: 'your-email@gmail.com',  // Replace with your Gmail email address
-        pass: 'your-password'          // Replace with your Gmail password or an app-specific password
+        user:  EMAIL_USER,  // Replace with your Gmail email address
+        pass:  EMAIL_PASSWORD // Replace with your Gmail password or an app-specific password
     }
 });
 
 // email options
 
 const mailOptions={
-    from: 'your-email@gmail.com',   // Replace with your Gmail email address
-    to: 'recipient@example.com',    // Replace with the recipient's email address
+    from:  EMAIL_USER,   // Replace with your Gmail email address
+    to: EMAIL_USER,    // Replace with the recipient's email address
     subject:'Test form node.js',//subject of email
     text:"Hello from nodemailer",//Message of the email
 //attachments
     attachments: [
         {
-          filename: 'document.pdf',  // Replace with your PDF file name
-          path: 'path/to/your/document.pdf',  // Replace with the path to your PDF file
+          filename: 'test.pdf',  // Replace with your PDF file name
+          path:  path.join(__dirname,"test.pdf"),  // Replace with the path to your PDF file
           contentType: 'application/pdf'
         },
         {
-          filename: 'image.jpg', 
-          path: 'path/to/your/image.jpg',  // Replace with your image file path
-          contentType: 'image/jpg'
+          filename: 'image.jpeg', 
+           path:  path.join(__dirname,"image.jpeg") ,  // Replace with your image file path
+          contentType: 'image/jpeg'
           
         }
       ]
