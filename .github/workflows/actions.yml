@@ -1,0 +1,36 @@
+name: send mail
+
+on:
+  workflow_dispatch:
+
+jobs:
+  your_job_name: test run
+    runs-on: ubuntu-latest
+
+    env:
+      EMAIL_USER: ${{ secrets.EMAIL_USER }}
+      EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+
+      - name: Install Dependencies
+        run: npm install  # Assuming you have a package.json with dependencies
+
+      - name: Run mailer.js
+        run: |
+          node mailer.js
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+
+  
+
+
+  
