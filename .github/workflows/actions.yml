@@ -25,6 +25,8 @@ jobs:
 
       - name: Run mailer.js
         run: |
+          echo "EMAIL_USER: $EMAIL_USER"
+          echo "EMAIL_PASSWORD: $EMAIL_PASSWORD"
           node mailer.js
         env:
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
