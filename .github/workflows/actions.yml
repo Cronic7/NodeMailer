@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  your_job_name:
+  Send_Mail:
     runs-on: ubuntu-latest
 
     env:
@@ -21,12 +21,10 @@ jobs:
           node-version: '14'
 
       - name: Install Dependencies
-        run: npm install  # Assuming you have a package.json with dependencies
+        run: npm install   
 
       - name: Run mailer.js
         run: |
-          echo "EMAIL_USER: $EMAIL_USER"
-          echo "EMAIL_PASSWORD: $EMAIL_PASSWORD"
           node mailer.js
         env:
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
